@@ -50,7 +50,7 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-
+		word = word.toLowerCase();
 		String closest = word;
 	
 		for (int i = 0; i < dictionary.length; i++) {
@@ -60,7 +60,7 @@ public class SpellChecker {
 	
 			int distance = levenshtein(word, dictionary[i]);
 	
-			if (distance <= threshold || distance < levenshtein(word, closest)) {
+			if (distance <= threshold && (closest.equals(word)|| distance < levenshtein(word, closest))) {
 				closest = dictionary[i];
 			}
 		}
